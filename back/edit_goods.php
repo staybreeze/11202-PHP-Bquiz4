@@ -46,6 +46,7 @@ $goods=$Goods->find($_GET['id']);
         </tr>
     </table>
     <div class="ct">
+    <!-- <input type="hidden" name="id" value="<?=$goods['id'];?>"> -->
         <input type="submit" value="修改">
         <input type="reset" value="重置">
         <input type="button" value="返回" onclick="location.href='do?=th'">
@@ -73,3 +74,27 @@ function getTypes(type,big_id){
     })
 }
 </script>
+<script>
+getTypes('big',0)
+
+$("#big").on("change",function(){
+    getTypes('mid',$("#big").val())
+})
+// 如果要讓下拉式選單也有相應變化，用以下程式碼(考試時可以不用)
+// function getTypes(type,big_id){
+//     $.get("./api/get_types.php",{big_id},(types)=>{
+//         switch(type){
+//             case 'big':
+//                 $("#big").html(types)
+//                 $("#big").val(<?=$goods['big'];?>)
+//                 getTypes('mid',$("#big").val())
+
+//             break;
+//             case 'mid':
+//                 $("#mid").html(types)
+//                 $("#mid").val(<?=$goods['mid'];?>)
+//             break;
+//         }
+//     })
+// }
+// </script>
