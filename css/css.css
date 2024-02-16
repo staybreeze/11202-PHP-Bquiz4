@@ -110,3 +110,6 @@ div.ww:hover > div.s
 {
 	font-size:12px;
 }
+#left .s a{
+	background-color:lightgreen;
+}
