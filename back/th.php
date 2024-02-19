@@ -95,14 +95,13 @@ function addType(type){
     <?php
     $goods=$Goods->all();
     foreach($goods as $good){
-
     ?>
     <tr class="pp">
-        <td> <?=$good['no'];?></td>
-        <td> <?=$good['name'];?></td>
-        <td> <?=$good['stock'];?></td>
-        <td> <?=($good['sh']==1)?'上架':'下架';?></td>
-        <td>
+        <td><?=$good['no'];?></td>
+        <td><?=$good['name'];?></td>
+        <td><?=$good['stock'];?></td>
+        <td><?=($good['sh']==1)?"上架":"下架";?></td>
+        <td style="width:120px">
             <button onclick="location.href='?do=edit_goods&id=<?=$good['id'];?>'">修改</button>
             <button onclick="del('goods',<?=$good['id'];?>)">刪除</button>
             <button onclick="sh(1,<?=$good['id'];?>)">上架</button>
@@ -110,15 +109,14 @@ function addType(type){
         </td>
     </tr>
     <?php
-    
     }
     ?>
 </table>
-
 <script>
-    function sh(sh,id){
-$.post("./api/sh.php",{id,sh},function(){
-    location.reload()
-})
-    }
+
+function sh(sh,id){
+    $.post("./api/sh.php",{id,sh},()=>{
+        location.reload();
+    })
+}
 </script>
